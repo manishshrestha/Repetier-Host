@@ -252,7 +252,7 @@ namespace RepetierHost.model
         public void UpdateMatrix()
         {
             Matrix4 transl = Matrix4.CreateTranslation(Position.x, Position.y, Position.z);
-            Matrix4 scale = Matrix4.Scale(Scale.x!=0 ? Scale.x : 1, Scale.y !=0 ? Scale.y : 1, Scale.z !=0 ? Scale.z : 1);
+            Matrix4 scale = Matrix4.CreateScale(Scale.x!=0 ? Scale.x : 1, Scale.y !=0 ? Scale.y : 1, Scale.z !=0 ? Scale.z : 1);
             Matrix4 rotx = Matrix4.CreateRotationX(Rotation.x * (float)Math.PI / 180.0f);
             Matrix4 roty = Matrix4.CreateRotationY(Rotation.y * (float)Math.PI / 180.0f);
             Matrix4 rotz = Matrix4.CreateRotationZ(Rotation.z * (float)Math.PI / 180.0f);

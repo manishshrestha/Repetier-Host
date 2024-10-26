@@ -363,7 +363,7 @@ namespace RepetierHost.view
             float dy2 = dy1 + ps.DumpAreaDepth;
             GL.LineWidth(1f);
             GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha, (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
             GL.Enable(EnableCap.Blend);
             GL.Disable(EnableCap.LineSmooth);
             GL.DepthFunc(DepthFunction.Lequal);
@@ -565,7 +565,7 @@ namespace RepetierHost.view
             {
                 GL.Disable(EnableCap.CullFace);
                 GL.Enable(EnableCap.Blend);	// Turn Blending On
-                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha, (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
                 GL.DepthFunc(DepthFunction.Less);
                 //GL.Disable(EnableCap.Lighting);
                 // Draw bottom
@@ -769,7 +769,7 @@ namespace RepetierHost.view
                 GL.Enable(EnableCap.Blend);
                 GL.LineWidth(2f);
                 GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
-                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha, (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
                 Color col = Main.threeDSettings.printerBase.BackColor;
                 //  GL.Translate(-ps.BedLeft-ps.PrintAreaWidth * 0.5f,-ps.BedFront -ps.PrintAreaDepth * 0.5f, -0.5f * ps.PrintAreaHeight);
                 GL.GetFloat(GetPName.ModelviewMatrix, out modelView);
@@ -876,7 +876,7 @@ namespace RepetierHost.view
             result = Matrix4.Mult(Matrix4.CreateTranslation(translateX, translateY, 0.0f), result);
             float scaleX = viewport[2] / width;
             float scaleY = viewport[3] / height;
-            result = Matrix4.Mult(Matrix4.Scale(scaleX, scaleY, 1.0f), result);
+            result = Matrix4.Mult(Matrix4.CreateScale(scaleX, scaleY, 1.0f), result);
             return result;
         }
         public uint lastDepth = 0;

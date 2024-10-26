@@ -555,7 +555,7 @@ namespace RepetierHost.connector
             Protocol = (int)key.GetValue("transferProtocol", transferProtocol);
             ResetOnConnect = (int)key.GetValue("resetOnConnect", resetOnConnect);
             resetOnEmergency = (int)key.GetValue("resetOnEmergency", resetOnEmergency);
-            ReceiveCacheSizeString = (string)key.GetValue("receiveCacheSize", receiveCacheSize.ToString());
+            ReceiveCacheSizeString = key.GetValue("receiveCacheSize", receiveCacheSize.ToString()).ToString();
             PingPong = ((int)key.GetValue("pingPong", pingPong ? 1 : 0) > 0 ? true : false);
         }
 
