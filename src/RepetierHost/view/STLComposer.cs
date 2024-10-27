@@ -617,8 +617,6 @@ namespace RepetierHost.view
                 model.exportObj(filename,true);
             else
                 model.exportSTL(filename, writeSTLBinary);
-            Slicer.lastBox.Clear();
-            Slicer.lastBox.Add(model.boundingBox);
         }
 
         private void buttonLand_Click(object sender, EventArgs e)
@@ -670,12 +668,8 @@ namespace RepetierHost.view
             if (listObjects.Items.Count > 1)
                 t += " + " + (listObjects.Items.Count - 1).ToString();
             Main.main.Title = t;
-            if(Main.slicer.ActiveSlicer == RepetierHost.view.utils.Slicer.SlicerID.Slic3r)
-                dir += Path.DirectorySeparatorChar + "composition.obj";
-            else
-                dir += Path.DirectorySeparatorChar + "composition.stl";
+            dir += Path.DirectorySeparatorChar + "composition.stl";
             saveComposition(dir);
-            Main.slicer.RunSlice(dir); // Slice it and load
         }
 
         public void Autoposition()

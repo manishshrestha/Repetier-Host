@@ -57,22 +57,11 @@
             this.eeprom = new System.Windows.Forms.ToolStripMenuItem();
             this.threeDSettingsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.repetierSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.internalSlicingParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soundConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.slicerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.activeSlicerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.slic3rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.externalSlic3rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skeinforgeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.slic3rConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.externalSlic3rConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skeinforgeConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.externalSlic3rSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skeinforgeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.killSlicingProcessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.temperatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.temperatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showExtruderTemperaturesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showHeatedBedTemperaturesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,8 +107,6 @@
             this.repetierHostDownloadPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.slic3rHomepageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skeinforgeHomepageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.repRapWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repRapForumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,10 +153,8 @@
             this.tabPageTemp = new System.Windows.Forms.TabPage();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabModel = new System.Windows.Forms.TabPage();
-            this.tabSlicer = new System.Windows.Forms.TabPage();
             this.tabGCode = new System.Windows.Forms.TabPage();
             this.tabPrint = new System.Windows.Forms.TabPage();
-            this.slicerPanel = new RepetierHost.view.SlicerPanel();
             this.tdSettings = new System.Windows.Forms.BindingSource(this.components);
             this.showCompassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
@@ -182,7 +167,6 @@
             this.splitInfoEdit.SuspendLayout();
             this.tabControlView.SuspendLayout();
             this.tab.SuspendLayout();
-            this.tabSlicer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tdSettings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,7 +176,6 @@
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.settingsToolStripMenuItem,
-            this.slicerToolStripMenuItem,
             this.temperatureToolStripMenuItem,
             this.printerToolStripMenuItem,
             this.toolsToolStripMenuItem,
@@ -375,7 +358,6 @@
             this.eeprom,
             this.threeDSettingsMenu,
             this.repetierSettingsToolStripMenuItem,
-            this.internalSlicingParameterToolStripMenuItem,
             this.soundConfigurationToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
@@ -419,135 +401,12 @@
             this.repetierSettingsToolStripMenuItem.Text = "Repetier general configuration";
             this.repetierSettingsToolStripMenuItem.Click += new System.EventHandler(this.repetierSettingsToolStripMenuItem_Click);
             // 
-            // internalSlicingParameterToolStripMenuItem
-            // 
-            this.internalSlicingParameterToolStripMenuItem.Name = "internalSlicingParameterToolStripMenuItem";
-            this.internalSlicingParameterToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
-            this.internalSlicingParameterToolStripMenuItem.Text = "Test case slicing parameter";
-            this.internalSlicingParameterToolStripMenuItem.Click += new System.EventHandler(this.internalSlicingParameterToolStripMenuItem_Click);
-            // 
             // soundConfigurationToolStripMenuItem
             // 
             this.soundConfigurationToolStripMenuItem.Name = "soundConfigurationToolStripMenuItem";
             this.soundConfigurationToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
             this.soundConfigurationToolStripMenuItem.Text = "Sound configuration";
             this.soundConfigurationToolStripMenuItem.Click += new System.EventHandler(this.soundConfigurationToolStripMenuItem_Click);
-            // 
-            // slicerToolStripMenuItem
-            // 
-            this.slicerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.activeSlicerToolStripMenuItem,
-            this.slic3rToolStripMenuItem,
-            this.externalSlic3rToolStripMenuItem,
-            this.skeinforgeToolStripMenuItem1,
-            this.toolStripSeparator1,
-            this.slic3rConfigurationToolStripMenuItem,
-            this.externalSlic3rConfigurationToolStripMenuItem,
-            this.skeinforgeConfigurationToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.externalSlic3rSetupToolStripMenuItem,
-            this.skeinforgeToolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.killSlicingProcessToolStripMenuItem});
-            this.slicerToolStripMenuItem.Name = "slicerToolStripMenuItem";
-            this.slicerToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.slicerToolStripMenuItem.Text = " Slicer";
-            // 
-            // activeSlicerToolStripMenuItem
-            // 
-            this.activeSlicerToolStripMenuItem.Enabled = false;
-            this.activeSlicerToolStripMenuItem.Name = "activeSlicerToolStripMenuItem";
-            this.activeSlicerToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.activeSlicerToolStripMenuItem.Text = "Active slicer";
-            // 
-            // slic3rToolStripMenuItem
-            // 
-            this.slic3rToolStripMenuItem.Checked = true;
-            this.slic3rToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.slic3rToolStripMenuItem.Name = "slic3rToolStripMenuItem";
-            this.slic3rToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.slic3rToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.slic3rToolStripMenuItem.Text = "Internal Slic3r";
-            this.slic3rToolStripMenuItem.Click += new System.EventHandler(this.slic3rToolStripMenuItem_Click);
-            // 
-            // externalSlic3rToolStripMenuItem
-            // 
-            this.externalSlic3rToolStripMenuItem.Name = "externalSlic3rToolStripMenuItem";
-            this.externalSlic3rToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.externalSlic3rToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.externalSlic3rToolStripMenuItem.Text = "External Slic3r";
-            this.externalSlic3rToolStripMenuItem.Click += new System.EventHandler(this.externalSlic3rToolStripMenuItem_Click);
-            // 
-            // skeinforgeToolStripMenuItem1
-            // 
-            this.skeinforgeToolStripMenuItem1.Name = "skeinforgeToolStripMenuItem1";
-            this.skeinforgeToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
-            this.skeinforgeToolStripMenuItem1.Size = new System.Drawing.Size(346, 22);
-            this.skeinforgeToolStripMenuItem1.Text = "Skeinforge";
-            this.skeinforgeToolStripMenuItem1.Click += new System.EventHandler(this.skeinforgeToolStripMenuItem1_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(343, 6);
-            // 
-            // slic3rConfigurationToolStripMenuItem
-            // 
-            this.slic3rConfigurationToolStripMenuItem.Name = "slic3rConfigurationToolStripMenuItem";
-            this.slic3rConfigurationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D1)));
-            this.slic3rConfigurationToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.slic3rConfigurationToolStripMenuItem.Text = "Internal Slic3r configuration";
-            this.slic3rConfigurationToolStripMenuItem.Click += new System.EventHandler(this.slic3rConfigurationToolStripMenuItem_Click);
-            // 
-            // externalSlic3rConfigurationToolStripMenuItem
-            // 
-            this.externalSlic3rConfigurationToolStripMenuItem.Name = "externalSlic3rConfigurationToolStripMenuItem";
-            this.externalSlic3rConfigurationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D2)));
-            this.externalSlic3rConfigurationToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.externalSlic3rConfigurationToolStripMenuItem.Text = "External Slic3r configuration";
-            this.externalSlic3rConfigurationToolStripMenuItem.Click += new System.EventHandler(this.externalSlic3rConfigurationToolStripMenuItem_Click);
-            // 
-            // skeinforgeConfigurationToolStripMenuItem
-            // 
-            this.skeinforgeConfigurationToolStripMenuItem.Name = "skeinforgeConfigurationToolStripMenuItem";
-            this.skeinforgeConfigurationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D3)));
-            this.skeinforgeConfigurationToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.skeinforgeConfigurationToolStripMenuItem.Text = "Skeinforge configuration";
-            this.skeinforgeConfigurationToolStripMenuItem.Click += new System.EventHandler(this.skeinforgeToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(343, 6);
-            // 
-            // externalSlic3rSetupToolStripMenuItem
-            // 
-            this.externalSlic3rSetupToolStripMenuItem.Name = "externalSlic3rSetupToolStripMenuItem";
-            this.externalSlic3rSetupToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.externalSlic3rSetupToolStripMenuItem.Text = "Slic3r setup";
-            this.externalSlic3rSetupToolStripMenuItem.Click += new System.EventHandler(this.externalSlic3rSetupToolStripMenuItem_Click);
-            // 
-            // skeinforgeToolStripMenuItem2
-            // 
-            this.skeinforgeToolStripMenuItem2.Name = "skeinforgeToolStripMenuItem2";
-            this.skeinforgeToolStripMenuItem2.Size = new System.Drawing.Size(346, 22);
-            this.skeinforgeToolStripMenuItem2.Text = "Skeinforge setup";
-            this.skeinforgeToolStripMenuItem2.Click += new System.EventHandler(this.skeinforgeSettingsToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(343, 6);
-            // 
-            // killSlicingProcessToolStripMenuItem
-            // 
-            this.killSlicingProcessToolStripMenuItem.Name = "killSlicingProcessToolStripMenuItem";
-            this.killSlicingProcessToolStripMenuItem.Size = new System.Drawing.Size(346, 22);
-            this.killSlicingProcessToolStripMenuItem.Text = "Kill slicing process";
-            this.killSlicingProcessToolStripMenuItem.Click += new System.EventHandler(this.killSlicingProcessToolStripMenuItem_Click);
             // 
             // temperatureToolStripMenuItem
             // 
@@ -893,8 +752,6 @@
             this.repetierHostDownloadPageToolStripMenuItem,
             this.manualToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.slic3rHomepageToolStripMenuItem,
-            this.skeinforgeHomepageToolStripMenuItem,
             this.toolStripSeparator2,
             this.repRapWebsiteToolStripMenuItem,
             this.repRapForumToolStripMenuItem,
@@ -940,25 +797,6 @@
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(229, 6);
-            // 
-            // slic3rHomepageToolStripMenuItem
-            // 
-            this.slic3rHomepageToolStripMenuItem.Name = "slic3rHomepageToolStripMenuItem";
-            this.slic3rHomepageToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.slic3rHomepageToolStripMenuItem.Text = "Slic3r homepage";
-            this.slic3rHomepageToolStripMenuItem.Click += new System.EventHandler(this.slic3rHomepageToolStripMenuItem_Click);
-            // 
-            // skeinforgeHomepageToolStripMenuItem
-            // 
-            this.skeinforgeHomepageToolStripMenuItem.Name = "skeinforgeHomepageToolStripMenuItem";
-            this.skeinforgeHomepageToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.skeinforgeHomepageToolStripMenuItem.Text = "Skeinforge homepage";
-            this.skeinforgeHomepageToolStripMenuItem.Click += new System.EventHandler(this.skeinforgeHomepageToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(229, 6);
             // 
             // repRapWebsiteToolStripMenuItem
             // 
@@ -1369,7 +1207,6 @@
             // tab
             // 
             this.tab.Controls.Add(this.tabModel);
-            this.tab.Controls.Add(this.tabSlicer);
             this.tab.Controls.Add(this.tabGCode);
             this.tab.Controls.Add(this.tabPrint);
             this.tab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1389,16 +1226,7 @@
             this.tabModel.TabIndex = 2;
             this.tabModel.Text = "Object placements";
             this.tabModel.UseVisualStyleBackColor = true;
-            // 
-            // tabSlicer
-            // 
-            this.tabSlicer.Controls.Add(this.slicerPanel);
-            this.tabSlicer.Location = new System.Drawing.Point(4, 22);
-            this.tabSlicer.Name = "tabSlicer";
-            this.tabSlicer.Size = new System.Drawing.Size(467, 304);
-            this.tabSlicer.TabIndex = 3;
-            this.tabSlicer.Text = "Slicer";
-            this.tabSlicer.UseVisualStyleBackColor = true;
+
             // 
             // tabGCode
             // 
@@ -1422,15 +1250,7 @@
             this.tabPrint.TabIndex = 0;
             this.tabPrint.Text = "Manual control";
             this.tabPrint.UseVisualStyleBackColor = true;
-            // 
-            // slicerPanel
-            // 
-            this.slicerPanel.AutoScroll = true;
-            this.slicerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.slicerPanel.Location = new System.Drawing.Point(0, 0);
-            this.slicerPanel.Name = "slicerPanel";
-            this.slicerPanel.Size = new System.Drawing.Size(467, 304);
-            this.slicerPanel.TabIndex = 0;
+ 
             // 
             // tdSettings
             // 
@@ -1481,7 +1301,6 @@
             this.splitInfoEdit.ResumeLayout(false);
             this.tabControlView.ResumeLayout(false);
             this.tab.ResumeLayout(false);
-            this.tabSlicer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tdSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1515,7 +1334,6 @@
         public System.Windows.Forms.ToolStripButton toolKillJob;
         public System.Windows.Forms.ToolStripStatusLabel fpsLabel;
         private System.Windows.Forms.ToolStripMenuItem testCaseGeneratorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem internalSlicingParameterToolStripMenuItem;
         public System.Windows.Forms.TabControl tab;
         public System.Windows.Forms.TabPage tabPrint;
         public System.Windows.Forms.TabPage tabModel;
@@ -1530,32 +1348,21 @@
         public System.Windows.Forms.ToolStripStatusLabel toolTempReading;
         private System.Windows.Forms.ToolStripSeparator toolStripStartHistory;
         private System.Windows.Forms.ToolStripSplitButton toolLoad;
-        private System.Windows.Forms.ToolStripMenuItem slicerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem activeSlicerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem slic3rConfigurationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem skeinforgeToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem slic3rHomepageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem skeinforgeHomepageToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem repRapWebsiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem repRapForumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thingiverseNewestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thingiversePopularToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        public System.Windows.Forms.ToolStripMenuItem slic3rToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem skeinforgeToolStripMenuItem1;
         public System.Windows.Forms.ToolStripMenuItem skeinforgeConfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolShowFilament;
         private System.Windows.Forms.ToolStripButton toolStripEmergencyButton;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem killSlicingProcessToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolPrinterSettings;
         public System.Windows.Forms.ToolStripMenuItem eeprom;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem externalSlic3rSetupToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem externalSlic3rToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem externalSlic3rConfigurationToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitInfoEdit;
         public System.Windows.Forms.TabControl tabControlView;
         public System.Windows.Forms.TabPage tabPage3DView;
@@ -1591,7 +1398,7 @@
         private System.Windows.Forms.ToolStripButton toolStripSaveJob;
         public System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.ToolStripMenuItem repetierHostDownloadPageToolStripMenuItem;
-        public System.Windows.Forms.TabPage tabSlicer;
+
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem sendScript1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendScript2ToolStripMenuItem;
@@ -1599,7 +1406,6 @@
         private System.Windows.Forms.ToolStripMenuItem sendScript4ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendScript5ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
-        public RepetierHost.view.SlicerPanel slicerPanel;
         public System.Windows.Forms.ToolStrip toolStrip;
         public System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;

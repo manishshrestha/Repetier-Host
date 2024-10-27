@@ -49,11 +49,8 @@ namespace RepetierHost
         public static GCodeGenerator generator = null;
         public string basicTitle = "";
         public static bool IsMono = Type.GetType("Mono.Runtime") != null;
-        public static Slicer slicer = null;
-        public static Slic3r slic3r = null;
         public static bool IsMac = false;
 
-        public Skeinforge skeinforge = null;
         public EEPROMRepetier eepromSettings = null;
         public EEPROMMarlin eepromSettingsm = null;
         public LogView logView = null;
@@ -230,7 +227,6 @@ namespace RepetierHost
                     splitLog.SplitterDistance = splitLog.Height - 100;
                 }
             }
-            slicerToolStripMenuItem.Visible = false;
             splitLog.Panel2Collapsed = !RegMemory.GetBool("logShow", true);
             conn.eventConnectionChange += OnPrinterConnectionChange;
             conn.eventPrinterAction += OnPrinterAction;
@@ -245,7 +241,7 @@ namespace RepetierHost
             logView = new LogView();
             logView.Dock = DockStyle.Fill;
             splitLog.Panel2.Controls.Add(logView);
-            skeinforge = new Skeinforge();
+
             PrinterChanged(printerSettings.currentPrinterKey, true);
             printerSettings.eventPrinterChanged += PrinterChanged;
             // GCode print preview
@@ -272,8 +268,6 @@ namespace RepetierHost
             editor.commands.Read("default", "en");
             UpdateHistory();
             UpdateConnections();
-            Main.slic3r = new Slic3r();
-            slicer = new Slicer();
             //toolShowLog_CheckedChanged(null, null);
             updateShowFilament();
             assign3DView();
@@ -292,7 +286,6 @@ namespace RepetierHost
             // Customizations
 
             if(Custom.GetBool("removeTestgenerator",false)) {
-                internalSlicingParameterToolStripMenuItem.Visible = false;
                 testCaseGeneratorToolStripMenuItem.Visible = false;
             }
             string titleAdd = Custom.GetString("titleAddition", "");
@@ -303,7 +296,6 @@ namespace RepetierHost
                 basicTitle = titlePrefix+basicTitle.Substring(0, p) + titleAdd + basicTitle.Substring(p);
                 Text = basicTitle;
             }
-            slicerPanel.UpdateSelection();
             if (Custom.GetBool("removeUpdates", false))
                 checkForUpdatesToolStripMenuItem.Visible = false;
             else
@@ -318,10 +310,7 @@ namespace RepetierHost
             }
             languageChanged += translate;
             translate();
-            if (Custom.GetBool("removeSkeinforge", false))
-            {
-                Main.slicer.ActiveSlicer = Slicer.SlicerID.Slic3r;
-            }
+
             if (Custom.GetBool("extraSupportButton", false))
             {
                 supportToolStripMenuItem.Text = Custom.GetString("extraSupportText", "Support");
@@ -418,7 +407,6 @@ namespace RepetierHost
         {
             fileToolStripMenuItem.Text = Trans.T("M_FILE");
             settingsToolStripMenuItem.Text = Trans.T("M_CONFIG");
-            slicerToolStripMenuItem.Text = Trans.T("M_SLICER");
             printerToolStripMenuItem.Text = Trans.T("M_PRINTER");
             temperatureToolStripMenuItem.Text = Trans.T("M_TEMPERATURE");
             helpToolStripMenuItem.Text = Trans.T("M_HELP");
@@ -429,7 +417,6 @@ namespace RepetierHost
             eeprom.Text = Trans.T("M_EEPROM_SETTINGS");
             threeDSettingsMenu.Text = Trans.T("M_3D_VIEWER_CONFIGURATION");
             repetierSettingsToolStripMenuItem.Text = Trans.T("M_REPETIER_SETTINGS");
-            internalSlicingParameterToolStripMenuItem.Text = Trans.T("M_TESTCASE_SETTINGS");
             soundConfigurationToolStripMenuItem.Text = Trans.T("M_SOUND_CONFIGURATION");
             showExtruderTemperaturesMenuItem.Text = Trans.T("M_SHOW_EXTRUDER_TEMPERATURES");
             showHeatedBedTemperaturesMenuItem.Text = Trans.T("M_SHOW_HEATED_BED_TEMPERATURES");
@@ -467,8 +454,6 @@ namespace RepetierHost
             repetierHostHomepageToolStripMenuItem.Text = Trans.T("M_REPETIER_HOST_HOMEPAGE");
             repetierHostDownloadPageToolStripMenuItem.Text = Trans.T("M_REPETIER_HOST_DOWNLOAD_PAGE");
             manualToolStripMenuItem.Text = Trans.T("M_MANUAL");
-            slic3rHomepageToolStripMenuItem.Text = Trans.T("M_SLIC3R_HOMEPAGE");
-            skeinforgeHomepageToolStripMenuItem.Text = Trans.T("M_SKEINFORGE_HOMEPAGE");
             repRapWebsiteToolStripMenuItem.Text = Trans.T("M_REPRAP_WEBSITE");
             repRapForumToolStripMenuItem.Text = Trans.T("M_REPRAP_FORUM");
             thingiverseNewestToolStripMenuItem.Text = Trans.T("M_THINGIVERSE_NEWEST");
@@ -480,7 +465,6 @@ namespace RepetierHost
             tabPage3DView.Text = Trans.T("TAB_3D_VIEW");
             tabPageTemp.Text = Trans.T("TAB_TEMPERATURE_CURVE");
             tabModel.Text = Trans.T("TAB_OBJECT_PLACEMENT");
-            tabSlicer.Text = Trans.T("TAB_SLICER");
             tabGCode.Text = Trans.T("TAB_GCODE_EDITOR");
             tabPrint.Text = Trans.T("TAB_MANUAL_CONTROL");
             toolPrinterSettings.Text = Trans.T("M_PRINTER_SETTINGS");
@@ -631,7 +615,6 @@ namespace RepetierHost
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             printerSettings.load(clickedItem.Text);
             printerSettings.formToCon();
-            slicerPanel.UpdateSelection();
             printerSettings.UpdateDimensions();
             Update3D();
             conn.open();
@@ -880,16 +863,6 @@ namespace RepetierHost
             FormToFront(printerSettings);
         }
 
-        private void skeinforgeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            skeinforge.Show();
-            skeinforge.BringToFront();
-        }
-
-        private void skeinforgeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            skeinforge.RunSkeinforge();
-        }
 
         private void threeDSettingsMenu_Click(object sender, EventArgs e)
         {
@@ -1064,11 +1037,6 @@ namespace RepetierHost
             TestGenerator.Execute();
         }
 
-        private void internalSlicingParameterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SlicingParameter.Execute();
-        }
-
         private void toolStripSDCard_Click(object sender, EventArgs e)
         {
             SDCard.Execute();
@@ -1201,23 +1169,6 @@ namespace RepetierHost
 
         }
 
-        private void slic3rToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            slicer.ActiveSlicer = Slicer.SlicerID.Slic3r;
-            //stlComposer1.buttonSlice.Text = Trans.T1("L_SLICE_WITH", slicer.SlicerName);
-        }
-
-        private void skeinforgeToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            slicer.ActiveSlicer = Slicer.SlicerID.Skeinforge;
-            //stlComposer1.buttonSlice.Text = Trans.T1("L_SLICE_WITH", slicer.SlicerName);
-        }
-
-        private void slic3rConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            slic3r.Show();
-            slic3r.BringToFront();
-        }
         public void assign3DView()
         {
             if (tab == null) return;
@@ -1257,7 +1208,7 @@ namespace RepetierHost
                 }
                 refreshCounter = 6;
             }
-            if (tab.SelectedTab == tabModel || tab.SelectedTab == tabSlicer)
+            if (tab.SelectedTab == tabModel )
             {
                 tabControlView.SelectedIndex = 0;
             }
@@ -1379,33 +1330,9 @@ namespace RepetierHost
             //conn.close();
         }
 
-        private void killSlicingProcessToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            skeinforge.KillSlice();
-            slic3r.KillSlice();
-            SlicingInfo.Stop();
-        }
-
-        private void externalSlic3rSetupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Slic3rSetup.Execute();
-        }
-
-        private void externalSlic3rToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            slicer.ActiveSlicer = Slicer.SlicerID.Slic3rExternal;
-            //stlComposer1.buttonSlice.Text = Trans.T1("L_SLICE_WITH", slicer.SlicerName);
-        }
-
-        private void externalSlic3rConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            slic3r.RunExternalConfig();
-        }
-
         private void Main_Activated(object sender, EventArgs e)
         {
             objectPlacement.recheckChangedFiles();
-            slicerPanel.UpdateSelection();
         }
         public void selectTimePeriod(object sender, EventArgs e)
         {
